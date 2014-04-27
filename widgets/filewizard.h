@@ -3,7 +3,8 @@
 
 #include <QWizard>
 #include <QtGui>
-#include "file/wowfilemanager.h"
+
+#include "file/wowfile.h"
 
 class MainWindow;
 

@@ -37,16 +37,7 @@ QWizardPage *FileWizard::inDev()
 
 WoWFile *FileWizard::getFile()
 {
-    switch(fileType)
-    {
-
-    case ADT:
-        return WoWFileManager::createAdtFile(this->field("path").toString(),WoWFile::WOTLK,this->field("texture").toString(),this->field("mapx").toInt(),this->field("mapy").toInt(),this->field("areaid").toInt());
-
-    default:
-        this->addPage(inDev());
-        break;
-    }
+    //create file here
 }
 
 

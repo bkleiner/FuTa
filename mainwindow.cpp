@@ -1,7 +1,5 @@
 #include "mainwindow.h"
-#include "file/wowfilemanager.h"
 #include "utilities/Utilities.h"
-#include "widgets/modelview.h"
 #include "file/blsfile.h"
 
 #include <QDebug>
@@ -48,21 +46,7 @@ void MainWindow::openFile()
 
 void MainWindow::openFile(QString fileName)
 {
-    QString ending = fileName.mid(fileName.lastIndexOf(".")+1);
-    if(ending == "adt")
-    {
-        if( centerWidget->addFile(WoWFileManager::openAdt(fileName)) )
-            addLastfile(fileName);
-    }
-    else if(ending == "wdt")
-    {
-        QMessageBox::information(NULL, "Wdt file selected", "WDT is not supported yet");
-    }
-    else if(ending == "wdl")
-    {
-        if( centerWidget->addFile(WoWFileManager::openWdl(fileName)) )
-            addLastfile(fileName);
-    }
+    //open adt here
 }
 
 void MainWindow::addLastfile(QString fileName)

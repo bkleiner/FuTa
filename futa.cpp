@@ -9,7 +9,6 @@ FuTa::FuTa(int& argc, char ** argv) : QApplication(argc, argv)
     setOrganizationDomain("hanfer.org");
     setApplicationName("FuTa");
 
-    fileManager = new WoWFileManager();
     mainWindow = new MainWindow();
     mainWindow->show();
 }
@@ -31,4 +30,11 @@ bool FuTa::notify(QObject * receiver, QEvent * event)
         qCritical() << "Uncaught Exception thrown:" << e.what();
     }
     return false;
+}
+
+int main(int argc, char *argv[])
+{
+    FuTa f(argc, argv);
+
+    return f.exec();
 }

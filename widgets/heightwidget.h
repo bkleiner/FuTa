@@ -5,7 +5,6 @@
 #include <QtGui>
 #include "file/adtfile.h"
 #include "wowfilewidget.h"
-#include "heightview.h"
 
 class HeightWidget : public WoWFileWidget
 {
@@ -23,7 +22,6 @@ private:
     QVBoxLayout *mainLayout;
     AdtFile *adtFile;
     QSettings settings;
-    heightView *heightview;
     QLabel *label;
     
 signals:
