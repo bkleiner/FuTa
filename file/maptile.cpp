@@ -40,6 +40,9 @@ void MapTile::read()
 
             offset += filename.size() + 1;
         }
+
+        if(mtex.empty())
+            mtex.push_back("tileset\\generic\\black.blp");
     }
 
     //MMDX
