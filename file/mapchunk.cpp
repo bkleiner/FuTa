@@ -49,19 +49,20 @@ void Alphamap::read(ENTRY_MCLY mcly, File &file, size_t size)
         uint8_t *abuf = buffIn.data();
         uint8_t *p = data.data();
 
-        for (int j=0; j<64; ++j)
+        for (int j=0; j < 64; ++j)
         {
-            for (int i=0; i<32; ++i)
+            for (int i=0; i < 32; ++i)
             {
                 unsigned char c = *abuf++;
-                *p++ = static_cast<unsigned char>((255*(static_cast<int>(c & 0x0f)))/0x0f);
-                if(i != 31)
-                    *p++ = static_cast<unsigned char>((255*(static_cast<int>(c & 0xf0)))/0xf0);
-                else
-                    *p++ = static_cast<unsigned char>((255*(static_cast<int>(c & 0x0f)))/0x0f);
+
+                uint8_t lower = (c & 0x0F);
+                uint8_t upper = i == 31 ? ((c & 0xF0) >> 4) : lower;
+
+                *p++ = (uint8_t)((lower / 15.0f) * 255.0f);
+                *p++ = (uint8_t)((upper / 15.0f) * 255.0f);
             }
         }
-        memcpy(data.data()+63*64, data.data()+62*64, 64);
+        memcpy(data.data() + 63 * 64, data.data() + 62 * 64, 64);
     }
 
 }
@@ -70,13 +71,15 @@ void Alphamap::write(FileBuffer &buffer)
 {
     const size_t size = 64 * 32;
     std::vector<uint8_t> buf(size);
-    unsigned char upperNibble, lowerNibble;
 
     for(size_t k = 0; k < size; k++ )
     {
-        lowerNibble = static_cast<unsigned char>(std::max(std::min( ( static_cast<float>(data[k * 2 + 0]) ) * 0.05882f + 0.5f , 15.0f),0.0f));
-        upperNibble = static_cast<unsigned char>(std::max(std::min( ( static_cast<float>(data[k * 2 + 1]) ) * 0.05882f + 0.5f , 15.0f),0.0f));
-        buf[k] = ( upperNibble << 4 ) + lowerNibble;
+        const size_t index = k * 2;
+
+        uint8_t val1 = (uint8_t)((data[index] / 255.0f) * 0xF);
+        uint8_t val2 = (uint8_t)((data[index + 1] / 255.0f) * 0xF);
+
+        buf[k] = (val2 << 4) | val1;
     }
 
     buffer.write(&buf);
