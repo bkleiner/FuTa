@@ -1,8 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
-#include <QtGui>
+#include <QtWidgets>
 #include <QSettings>
 #include "file/wowfile.h"
 #include "file/wowfilemodel.h"

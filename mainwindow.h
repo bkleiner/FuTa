@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtGui>
+#include <QtWidgets>
 #include "widget.h"
 #include "widgets/filewizard.h"
 

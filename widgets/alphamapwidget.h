@@ -1,7 +1,7 @@
 #ifndef ALPHAMAPWIDGET_H
 #define ALPHAMAPWIDGET_H
 
-#include <QWidget>
+#include <QtWidgets>
 #include <QtGui>
 #include "widgets/wowfilewidget.h"
 

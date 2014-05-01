@@ -80,7 +80,8 @@ void alphamapWidget::drawAlphaToPic(QImage *pic, int layer)
 
 void alphamapWidget::renderAlpha(QImage *pic, int x, int y, int layer)
 {
-    QColor rgb = settings.value("alphamap/color",Qt::green).value<QColor>();
+    QVariant variant = QColor(Qt::green);
+    QColor rgb = settings.value("alphamap/color",variant).value<QColor>();
     QImage::Format format = (QImage::Format)settings.value("alphamap/format",QImage::Format_ARGB32).toInt();
     Alphamap::Ptr amap = adtFile->getAlphamap(x, y, layer);
 

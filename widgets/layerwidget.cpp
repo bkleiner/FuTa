@@ -21,7 +21,7 @@ LayerWidget::LayerWidget(MapTile* file, QWidget *parent) :
 
     texModel->setHorizontalHeaderLabels(QStringList("Texture Path"));
     texTable->setModel(texModel);
-    texTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    texTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     texTable->verticalHeader()->setVisible(false);
     texTable->verticalHeader()->setHighlightSections(false);
     texTable->setContextMenuPolicy(Qt::CustomContextMenu);

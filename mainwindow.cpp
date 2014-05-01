@@ -3,6 +3,8 @@
 #include "file/maptile.h"
 
 #include <QDebug>
+#include <Qt>
+#include <QColor>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
@@ -92,7 +94,8 @@ void MainWindow::setWoWPath()
 
 void MainWindow::setAlphaColor()
 {
-    QColor color = QColorDialog::getColor(settings.value("alphamap/color",Qt::green).value<QColor>(), this, "Select Color", QColorDialog::DontUseNativeDialog);
+    QColor current = settings.value("alphamap/color").value<QColor>();
+    QColor color = QColorDialog::getColor(current, this, "Select Color", QColorDialog::DontUseNativeDialog);
     settings.setValue("alphamap/color",color);
     emit settingsChanged();
 }

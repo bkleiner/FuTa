@@ -2,7 +2,7 @@
 #define FILEWIZARD_H
 
 #include <QWizard>
-#include <QtGui>
+#include <QtWidgets>
 
 #include "file/wowfile.h"
 
