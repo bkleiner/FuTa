@@ -3,19 +3,19 @@
 
 #include <QWidget>
 #include <QtGui>
-#include "file/adtfile.h"
+#include "file/maptile.h"
 #include "wowfilewidget.h"
 
 class WaterWidget : public WoWFileWidget
 {
     Q_OBJECT
 public:
-    explicit WaterWidget(AdtFile* file, QWidget *parent = 0);
+    explicit WaterWidget(MapTile* file, QWidget *parent = 0);
 
 private:
     QPushButton *saveButton;
     QPushButton *importButton;
-    AdtFile* adtFile;
+    MapTile* adtFile;
     
 signals:
     

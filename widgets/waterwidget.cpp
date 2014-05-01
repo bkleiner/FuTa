@@ -1,6 +1,6 @@
 #include "waterwidget.h"
 
-WaterWidget::WaterWidget(AdtFile *file, QWidget *parent) :
+WaterWidget::WaterWidget(MapTile *file, QWidget *parent) :
     WoWFileWidget(parent)
   ,adtFile(file)
 {
@@ -26,11 +26,11 @@ void WaterWidget::importFile()
 #else
     QString filename = adtFile->getFilename().left(adtFile->getFilename().lastIndexOf("/")+1);
 #endif
-    adtFile->importWater(QFileDialog::getOpenFileName(this,"Select the water files to open",filename,"Water Files (*.mh2o)").toStdString());
+    //adtFile->importWater(QFileDialog::getOpenFileName(this,"Select the water files to open",filename,"Water Files (*.mh2o)").toStdString());
 }
 
 void WaterWidget::exportFile()
 {
     QString filename = adtFile->getFilename().left(adtFile->getFilename().lastIndexOf(".")+1).append("mh2o");
-    adtFile->exportWater(QFileDialog::getSaveFileName(this,"Select path to save the water file",filename,"Water Files (*.mh2o)").toStdString());
+    //adtFile->exportWater(QFileDialog::getSaveFileName(this,"Select path to save the water file",filename,"Water Files (*.mh2o)").toStdString());
 }

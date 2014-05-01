@@ -3,14 +3,14 @@
 
 #include <QWidget>
 #include <QtGui>
-#include "file/adtfile.h"
+#include "file/maptile.h"
 #include "wowfilewidget.h"
 
 class HeightWidget : public WoWFileWidget
 {
     Q_OBJECT
 public:
-    explicit HeightWidget(AdtFile* file, QWidget *parent = 0);
+    explicit HeightWidget(MapTile* file, QWidget *parent = 0);
 
     void creatLayout();
 
@@ -20,7 +20,7 @@ private:
     QPushButton *saveButton;
     QPushButton *importButton;
     QVBoxLayout *mainLayout;
-    AdtFile *adtFile;
+    MapTile *adtFile;
     QSettings settings;
     QLabel *label;
     

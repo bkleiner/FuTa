@@ -3,23 +3,23 @@
 
 #include <QWidget>
 #include <QtGui>
-#include "file/adtfile.h"
 #include "widgets/wowfilewidget.h"
 
+class MapTile;
 
 class alphamapWidget : public WoWFileWidget
 {
     Q_OBJECT
 public:
-    explicit alphamapWidget(AdtFile* file, QWidget *parent = 0);
+    explicit alphamapWidget(MapTile* file, QWidget *parent = 0);
 
     virtual void reload();
 
 private:
-    AdtFile* adtFile;
+    MapTile* adtFile;
     QTabWidget *tabs;
     QList<QImage*> alphamaps;
-    QPushButton *saveButton;
+    QPushButton *exportButton;
     QPushButton *importButton;
     QSettings settings;
 
@@ -33,7 +33,7 @@ private:
 signals:
     
 public slots:
-    void saveAlphamaps();
+    void exportPNG();
     void importPNG();
     
 };

@@ -1,7 +1,7 @@
 #include "layerwidget.h"
 #include <QDebug>
 
-LayerWidget::LayerWidget(AdtFile* file, QWidget *parent) :
+LayerWidget::LayerWidget(MapTile* file, QWidget *parent) :
     WoWFileWidget(parent)
   ,adtFile(file)
 {
@@ -10,7 +10,7 @@ LayerWidget::LayerWidget(AdtFile* file, QWidget *parent) :
     texTable = new QTableView(this);
     saveButton = new QPushButton(tr("&Apply"),this);
     texModel = new QStandardItemModel(this);
-    texList = QString::fromStdString(adtFile->getTextures()).split(QChar::Null, QString::SkipEmptyParts);
+    //texList = QString::fromStdString(adtFile->getTextures()).split(QChar::Null, QString::SkipEmptyParts);
 
     for (int row = 0; row < texList.size(); ++row)
         texModel->appendRow(new QStandardItem(texList.at(row)));
@@ -47,7 +47,7 @@ void LayerWidget::save()
     QString textures;
     for(int i = 0; i < texModel->rowCount(); ++i)
         textures.append(texModel->item(i)->text()).append(QChar::Null);
-    adtFile->setTextures(textures.toStdString());
+    //adtFile->setTextures(textures.toStdString());
     for(int i = 0; i < tabs->count(); ++i)
         //int i = tabs->currentIndex();
     {
@@ -55,7 +55,7 @@ void LayerWidget::save()
         QLineEdit *flagsLine = tabs->widget(i)->findChild<QLineEdit *>("flagsLine");
         QLineEdit *effectLine = tabs->widget(i)->findChild<QLineEdit *>("effectLine");
 
-        for(int u = 0; u < 256; ++u)
+        /*for(int u = 0; u < 256; ++u)
         {
             if(adtFile->getMclyEntrys(u)->size() > i)
             {
@@ -72,7 +72,7 @@ void LayerWidget::save()
             combo->setCurrentIndex(adtFile->getMclyEntrys(128)->at(i).textureID);
             flagsLine->setText(QString("%1").arg((int)adtFile->getMclyEntrys(128)->at(i).flags));
             effectLine->setText(QString("%1").arg((int)adtFile->getMclyEntrys(128)->at(i).effectID));
-        }
+        }*/
     }
 }
 
@@ -121,7 +121,7 @@ QWidget *LayerWidget::createLayerTab(int layer)
     for (int row = 0; row < texList.size(); ++row)
         textureCombo->addItem(texList.at(row),row);
 
-    if(adtFile->getMclyEntrys(16*8)->size() > layer)
+    /*if(adtFile->getMclyEntrys(16*8)->size() > layer)
     {
         textureCombo->setCurrentIndex(adtFile->getMclyEntrys(128)->at(layer).textureID);
         flagsLine->setText(QString("%1").arg((int)adtFile->getMclyEntrys(128)->at(layer).flags));
@@ -129,7 +129,7 @@ QWidget *LayerWidget::createLayerTab(int layer)
     }
     else
         secLayout->addWidget(new QLabel("this Layer is not set in the adt\nu will have to create it with the alphamap tool first"),3,0,3,2);
-
+    */
     secLayout->addWidget(textureLabel,0,0);
     secLayout->addWidget(textureCombo,0,1);
     secLayout->addWidget(flagsLabel,1,0);

@@ -3,6 +3,8 @@
 
 #include <QString>
 #include <QPair>
+#include <stdexcept>
+
 #include "widgets/wowfilewidget.h"
 
 class WoWFile
@@ -18,31 +20,20 @@ public:
     };
 
     typedef QPair<QString, WoWFileWidget *> wowpair;
-    typedef float NoLoDArray[9][9];
-    typedef float LoDArray[8][8];
 
-    typedef int16_t LowNoLoDArray[17][17];
-    typedef int16_t LowLoDArray[16][16];
+    WoWFile(QString fileName);
 
-    WoWFile(QString fileName, char *dataIn = 0, int sizeIn = 0);
-
-
-    virtual QList< wowpair > getAvailableWidgets() { return functions; }
-    virtual void save() {}
+    virtual void read() { throw std::runtime_error("read() not implemented"); }
+    virtual void save() { throw std::runtime_error("save() not implemented"); }
 
     int getAvailableWidgetsCount() { return functions.count(); }
+    virtual QList< wowpair > getAvailableWidgets() { return functions; }
+
     QString getFilename() { return filename; }
 
-    char* data;
-
 protected:
-    virtual void init() {}
-
     QList< wowpair > functions;
     QString filename;
-    int size;
-
-
 };
 
 #endif // WOWFILE_H

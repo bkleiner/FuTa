@@ -1,6 +1,6 @@
 #include "mainwindow.h"
-#include "utilities/Utilities.h"
-#include "file/blsfile.h"
+
+#include "file/maptile.h"
 
 #include <QDebug>
 
@@ -40,13 +40,17 @@ void MainWindow::openFile()
     QStringList fileNames = QFileDialog::getOpenFileNames(this,"Select the WoW files to open",lastFiles.first().left(lastFiles.lastIndexOf("/")),"WoWFiles (*.adt *.wdt *.wdl)");
     foreach(QString fileName, fileNames)
     {
-        this->openFile(fileName);
+        openFile(fileName);
     }
 }
 
 void MainWindow::openFile(QString fileName)
 {
-    //open adt here
+    MapTile *file = new MapTile(fileName);
+
+    file->read();
+    centerWidget->addFile(file);
+    addLastfile(fileName);
 }
 
 void MainWindow::addLastfile(QString fileName)
@@ -62,16 +66,16 @@ void MainWindow::addLastfile(QString fileName)
 
 void MainWindow::createFile()
 {
-    QAction *fileAction = (QAction*)this->sender();
+    QAction *fileAction = (QAction*)sender();
     FileWizard *wizard = new FileWizard((FileWizard::type)fileAction->data().toInt(),this);
     if(wizard->exec())
-        this->centerWidget->addFile(wizard->getFile());
+        centerWidget->addFile(wizard->getFile());
 }
 
 void MainWindow::openLastFile()
 {
-    QAction *lastFile = (QAction*)this->sender();
-    this->openFile(lastFile->text());
+    QAction *lastFile = (QAction*)sender();
+    openFile(lastFile->text());
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

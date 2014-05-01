@@ -3,14 +3,14 @@
 
 #include <QWidget>
 #include <QtGui>
-#include "file/adtfile.h"
+#include "file/maptile.h"
 #include "widgets/wowfilewidget.h"
 
 class LayerWidget : public WoWFileWidget
 {
     Q_OBJECT
 public:
-    explicit LayerWidget(AdtFile* file, QWidget *parent = 0);
+    explicit LayerWidget(MapTile* file, QWidget *parent = 0);
 
     //virtual void reload();
 
@@ -20,7 +20,7 @@ private:
     QStringList texList;
     QPushButton *saveButton;
     QTabWidget *tabs;
-    AdtFile* adtFile;
+    MapTile* adtFile;
 
     QWidget* createLayerTab(int layer);
     

@@ -1,7 +1,7 @@
 #include "heightwidget.h"
 
 
-HeightWidget::HeightWidget(AdtFile* file, QWidget *parent) :
+HeightWidget::HeightWidget(MapTile* file, QWidget *parent) :
     WoWFileWidget(parent)
   ,adtFile(file)
   ,label(NULL)
@@ -44,11 +44,11 @@ void HeightWidget::importFile()
 #else
     QString filename = adtFile->getFilename().left(adtFile->getFilename().lastIndexOf("/")+1);
 #endif
-    adtFile->importHeight(QFileDialog::getOpenFileName(this,"Select the height files to open",filename,"Height Files (*.height)").toStdString());
+    //adtFile->importHeight(QFileDialog::getOpenFileName(this,"Select the height files to open",filename,"Height Files (*.height)").toStdString());
 }
 
 void HeightWidget::exportFile()
 {
     QString filename = adtFile->getFilename().left(adtFile->getFilename().lastIndexOf(".")+1).append("height");
-    adtFile->exportHeight(QFileDialog::getSaveFileName(this,"Select path to save the height file",filename,"Height Files (*.height)").toStdString());
+    //adtFile->exportHeight(QFileDialog::getSaveFileName(this,"Select path to save the height file",filename,"Height Files (*.height)").toStdString());
 }
