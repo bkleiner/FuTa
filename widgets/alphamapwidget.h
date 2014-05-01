@@ -3,7 +3,7 @@
 
 #include <QtWidgets>
 #include <QtGui>
-#include "widgets/wowfilewidget.h"
+#include "../widgets/wowfilewidget.h"
 
 class MapTile;
 

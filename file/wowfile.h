@@ -5,7 +5,7 @@
 #include <QPair>
 #include <stdexcept>
 
-#include "widgets/wowfilewidget.h"
+#include "../widgets/wowfilewidget.h"
 
 class WoWFile
 {

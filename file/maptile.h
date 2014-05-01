@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "wowfile.h"
-#include "widgets/alphamapwidget.h"
+#include "../widgets/alphamapwidget.h"
 #include "mapchunk.h"
 
 class MapTile : public WoWFile

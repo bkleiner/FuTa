@@ -1,6 +1,6 @@
 #include "alphamapwidget.h"
 
-#include "file/maptile.h"
+#include "../file/maptile.h"
 
 alphamapWidget::alphamapWidget(MapTile* file, QWidget *parent)
     : WoWFileWidget(parent)

@@ -1,6 +1,6 @@
 #include "maptile.h"
 
-#include "file/filebuffer.h"
+#include "../file/filebuffer.h"
 
 MapTile::MapTile(QString fileName)
     : WoWFile(fileName)

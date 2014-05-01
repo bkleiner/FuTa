@@ -1,5 +1,5 @@
 #include "filewizard.h"
-#include "futa.h"
+#include "../futa.h"
 
 FileWizard::FileWizard(type filetype, QWidget *parent) :
     QWizard(parent)
@@ -38,6 +38,7 @@ QWizardPage *FileWizard::inDev()
 WoWFile *FileWizard::getFile()
 {
     //create file here
+    return nullptr;
 }
 
 

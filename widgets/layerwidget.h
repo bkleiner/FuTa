@@ -3,8 +3,8 @@
 
 #include <QWidget>
 #include <QtGui>
-#include "file/maptile.h"
-#include "widgets/wowfilewidget.h"
+#include "../file/maptile.h"
+#include "wowfilewidget.h"
 
 class LayerWidget : public WoWFileWidget
 {

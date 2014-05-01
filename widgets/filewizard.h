@@ -4,7 +4,7 @@
 #include <QWizard>
 #include <QtWidgets>
 
-#include "file/wowfile.h"
+#include "../file/wowfile.h"
 
 class MainWindow;
 
