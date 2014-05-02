@@ -300,7 +300,7 @@ FileBuffer MapChunk::write()
         mcnkPtr->mcse = 0;
     }
 
-    mcnkHeader->size = buffer.size();
+    mcnkHeader->size = buffer.size() - sizeof(ChunkHeader);
 
     return buffer;
 }
